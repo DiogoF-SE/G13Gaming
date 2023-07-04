@@ -1,0 +1,82 @@
+#profile {
+  text-align: left;
+  margin-top: 20px;
+  padding-left: 120px;
+  margin-bottom: 120px;
+}
+
+img.profile-picture {
+  float: left;
+  width: 190px;
+  height: 190px;
+  margin-right: 30px;
+  margin-left: 0;
+  border: 2px solid #333;
+}
+
+#profile_name {
+  display: absolute;
+  margin-top: 0 px;
+  font-size: 20px;
+  height: 40px;
+  width: 10cm;
+}
+nav button {
+  width: 100px;
+  margin-bottom: 10px;
+  display: block;
+  cursor: pointer;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  background-color: #333;
+  padding: 10px;
+}
+
+#edit {
+  color: white;
+  text-decoration: none;
+}
+
+#nameText {
+  margin-bottom: 0px;
+}
+
+#buttons {
+  text-align: right;
+}
+
+#feedback {
+  margin-top: 2px;
+}
+
+#fileInput {
+  margin: 0 auto;
+  display: table;
+  padding-left: 0px;
+  text-align: left;
+}
+
+.image-list {
+  list-style-type: none;
+  overflow: auto;
+  white-space: nowrap;
+  padding: 0;
+  width: 60%;
+}
+
+.image-list li {
+  display: inline-block;
+}
+
+#profile-pictures {
+  width: 90px;
+  height: 90px;
+  border: 1px solid #333;
+}
+
+.pending {
+  filter: brightness(50%);
+}

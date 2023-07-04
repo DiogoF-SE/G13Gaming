@@ -1,0 +1,14 @@
+<div class="center2">
+  <app-item-search></app-item-search>
+</div>
+<div class="center">
+  <a *ngFor="let item of items" routerLink="/detail/{{ item.id }}">
+    <img class="img-responsive" src="{{ item.cover }}" /><br />
+    <p *ngIf="item.price > 0">
+      <b>{{ item.title }} <br />{{ item.price | currency: "EUR" }} </b>
+    </p>
+    <p *ngIf="item.price == 0">
+      <b>{{ item.title }} <br />Free to Play </b>
+    </p>
+  </a>
+</div>

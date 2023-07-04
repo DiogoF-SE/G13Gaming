@@ -1,0 +1,42 @@
+<nav>
+  <ul *ngIf="username; else loginRedirections">
+    <li><a routerLink="/">HOME</a></li>
+    <li><a routerLink="/profile/{{ username }}">PROFILE</a></li>
+    <li><a routerLink="/following/{{ username }}">FOLLOWING</a></li>
+    <li><a routerLink="/followers/{{ username }}">FOLLOWERS</a></li>
+    <li><a routerLink="/dashboard">LISTS</a></li>
+    <li><a routerLink="/{{ username }}/library">LIBRARY</a></li>
+    <li><a routerLink="/list/{{ username }}/wishlist">WISHLIST</a></li>
+  </ul>
+  <ng-template #loginRedirections>
+    <ul>
+      <li><a routerLink="/">HOME</a></li>
+      <li><a routerLink="/login">PROFILE</a></li>
+      <li><a routerLink="/login">FOLLOWING</a></li>
+      <li><a routerLink="/login">FOLLOWERS</a></li>
+      <li><a routerLink="/login">LISTS</a></li>
+      <li><a routerLink="/login">LIBRARY</a></li>
+      <li><a routerLink="/login">WISHLIST</a></li>
+    </ul>
+  </ng-template>
+</nav>
+
+<h2 class="most-popular-title">MOST POPULAR CONTENT</h2>
+
+<div class="most-popular-content">
+  <a
+    class="box-with-game"
+    *ngFor="let item of items"
+    routerLink="/detail/{{ item.id }}"
+  >
+    <img src="{{ item.cover }}" alt="game cover" />
+    <br />
+    <p *ngIf="item.price > 0">
+      {{ item.title }}<br /><br />{{ item.price | currency: "EUR" }}
+    </p>
+    <p *ngIf="item.price == 0">
+      {{ item.title }} <br /><br />
+      Free to Play
+    </p>
+  </a>
+</div>

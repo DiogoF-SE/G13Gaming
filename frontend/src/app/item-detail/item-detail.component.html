@@ -1,0 +1,145 @@
+<div *ngIf="item" class="main">
+  <h2>{{ item.title }}</h2>
+
+  <div class="info">
+    <img class="cover" src="{{ item.cover }}" />
+    <div class="details">
+      <p>{{ item.type | uppercase }} {{ item.stars }}&#9733;</p>
+      <p *ngIf="item.price > 0">Price: {{ item.price | currency: "EUR" }}</p>
+      <p *ngIf="item.price == 0">Free to Play</p>
+      <p *ngIf="item.platform === 'all'">
+        Platform: PC, XBOX,<br />
+        Playstation, Nintendo Switch
+      </p>
+      <p *ngIf="item.platform !== 'all'">Platform: {{ item.platform }}</p>
+      <div class="item-buttons">
+        <div
+          [matTooltip]="isLoggedIn ? '' : 'You are not signed in'"
+          matTooltipPosition="above"
+        >
+          <button
+            #addItemBtn
+            mat-raised-button
+            [disabled]="!isLoggedIn || isInLibrary()"
+            (click)="
+              item.price === 0
+                ? addToLibrary(addItemBtn)
+                : addToCart(addItemBtn)
+            "
+          >
+            <mat-icon aria-hidden="true">add_shopping_cart</mat-icon>
+            {{ getLibraryButtonLabel() }}
+          </button>
+        </div>
+        <div
+          [matTooltip]="isLoggedIn ? '' : 'You are not signed in'"
+          matTooltipPosition="above"
+        >
+          <button
+            mat-raised-button
+            *ngIf="isLoggedIn"
+            [disabled]="!isLoggedIn || isInWishlist() || isInLibrary()"
+            [matTooltip]="isLoggedIn ? '' : 'You are not signed in'"
+            matTooltipPosition="above"
+            (click)="addToWishlist()"
+          >
+            <mat-icon aria-hidden="true">{{
+              isLoggedIn && isInWishlist()
+                ? "playlist_add_check"
+                : "playlist_add"
+            }}</mat-icon>
+            {{ getWishlistButtonLabel() }}
+          </button>
+        </div>
+        <div id="feedback-message">{{ message }}</div>
+      </div>
+    </div>
+  </div>
+  <p>{{ item.description }}</p>
+  <div class="reel">
+    <video
+      *ngIf="item.video"
+      type="video/mp4"
+      autoplay="true"
+      controls="true"
+      [muted]="true"
+      [loop]="true"
+      src="{{ item.video }}"
+      width="600px"
+      height="auto"
+    >
+      Browser not supported
+    </video>
+    <img
+      class="img-responsive"
+      *ngIf="item.reel[0]"
+      src="{{ item.reel[0] }}"
+      tabindex="0"
+    />
+    <img
+      class="img-responsive"
+      *ngIf="item.reel[1]"
+      src="{{ item.reel[1] }}"
+      tabindex="0"
+    />
+  </div>
+
+  <br />
+  <p>Available Languages:</p>
+  <div class="lang" tabindex="0">
+    <p *ngFor="let lang of item.language">{{ lang }}</p>
+  </div>
+
+  <div tabindex="0">
+    <h3>Reviews</h3>
+    <div *ngIf="user; else disabledReviews">
+      <div class="reviewItem">
+        This game has a total of {{ item.reviews.length }} reviews
+        <textarea
+          name="Review"
+          maxlength="5000"
+          id="description"
+          placeholder="Write your review here"
+        ></textarea>
+        Rate the game:
+        <select name="classification" id="classification">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option selected value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <button (click)="createReview()">Send review</button>
+      </div>
+      <div *ngIf="item.reviews.length == 0">
+        <p>Be the first to review this item</p>
+      </div>
+      <div class="reviews" *ngFor="let review of item.reviews">
+        <div id="reviewHeader">
+          <span id="reviewer">{{ review.author }}</span>
+          <span id="stars">{{ review.classification }} &star;</span>
+        </div>
+        <p id="desc">{{ review.description }}</p>
+        <button (click)="showComment(review)">Reply</button>
+        <button (click)="like(review)">
+          {{ review.likes.length }} &#x2764;
+        </button>
+        <div id="comment-{{ review.author }}" style="display: none">
+          <textarea
+            name="comment"
+            class="comment-area"
+            id="comment-area-{{ review.author }}"
+            placeholder="Write your comment here"
+          ></textarea>
+          <button id="send" (click)="addComment(review)">Send</button>
+        </div>
+        <div class="answers" *ngFor="let comment of review.comments">
+          <p>{{ comment }}</p>
+        </div>
+      </div>
+    </div>
+    <ng-template #disabledReviews>
+      <div>You need to be logged in to review a game</div>
+    </ng-template>
+  </div>
+</div>

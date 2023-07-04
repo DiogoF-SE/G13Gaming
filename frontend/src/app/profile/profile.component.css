@@ -1,0 +1,62 @@
+#profile {
+  text-align: left;
+  margin-top: 20px;
+  padding-left: 120px;
+}
+
+#profile_picture {
+  float: left;
+  width: 5cm;
+  height: 5cm;
+  margin-right: 30px;
+  margin-left: 0;
+  border: 2px solid #333;
+}
+
+#profile_name {
+  margin: 0px;
+  padding-top: 20px;
+  font-size: 23px;
+}
+nav button {
+  width: 100px;
+  margin-bottom: 10px;
+  display: block;
+  cursor: pointer;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  background-color: #333;
+  padding: 10px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+nav li {
+  margin: 0 10px;
+  transition: transform 100ms ease-in;
+}
+
+nav li:hover {
+  transform: scale(1.1);
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+.follow-button {
+  display: none;
+}
+
+.p-following {
+  display: none;
+}

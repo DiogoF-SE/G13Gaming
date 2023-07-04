@@ -1,0 +1,47 @@
+h1 {
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+.container {
+  align-content: center;
+}
+
+#signup {
+  width: 382px;
+  overflow: hidden;
+  margin: auto;
+  margin: 50 0 0 450px;
+  padding: 80px;
+  background: #47645c;
+  border-radius: 15px;
+}
+#requisitos {
+  color: rgb(0, 204, 255);
+}
+p {
+  color: white;
+  font-size: 17px;
+  text-decoration: none;
+}
+label {
+  color: white;
+}
+
+button[type="submit"] {
+  margin-top: 40px;
+  width: 100px;
+  height: 30px;
+  border: none;
+  border-radius: 17px;
+  padding-left: 7px;
+  color: black;
+}
+button[type="button"] {
+  width: 100px;
+  height: 30px;
+  border: none;
+  border-radius: 17px;
+  padding-left: 7px;
+  color: black;
+}

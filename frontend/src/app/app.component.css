@@ -1,0 +1,87 @@
+header {
+  background-color: #47645c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  color: #fff;
+  gap: 1rem;
+}
+
+nav a {
+  font-size: 1rem;
+  border-radius: 4px;
+}
+
+nav a:not(#dashboard-link) {
+  color: #fff;
+  background-color: #477e70;
+}
+
+nav a > * {
+  vertical-align: middle;
+}
+
+nav a > * + * {
+  margin-left: 0.2rem;
+}
+
+.dropdown-content > * + *,
+.right-nav > * + * {
+  margin-left: 0.6rem;
+}
+
+#browse-link > * + * {
+  margin-left: 0.35rem;
+}
+
+#dashboard-link {
+  background-color: #69f0ae;
+  color: #333;
+  margin-right: 0.6rem;
+}
+
+.right-nav {
+  margin-left: auto;
+  right: 0;
+}
+
+main {
+  margin: 2rem auto;
+  max-width: 80vw;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.left-nav {
+  margin-right: auto;
+  left: 0;
+}
+
+.right-nav {
+  display: flex;
+  align-items: center;
+  right: 0;
+}
+
+#cart-link {
+  padding: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  main {
+    max-width: 95vw;
+  }
+}

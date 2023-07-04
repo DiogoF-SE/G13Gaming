@@ -1,0 +1,62 @@
+<div *ngIf="user">
+  <nav>
+    <h2 id="edit">
+      Edit {{ user.username }} profile{{ isUnchanged() ? "" : "*" }}
+    </h2>
+  </nav>
+  <div id="profile">
+    <div *ngIf="user.image">
+      <img
+        class="profile-picture"
+        [ngClass]="{ pending: selectedImage !== user.image }"
+        [src]="selectedImage"
+        alt="Profile picture"
+      />
+    </div>
+    <div id="changeName">
+      <h2 id="nameText">Change name:</h2>
+      <input
+        name="username"
+        id="profile_name"
+        [(ngModel)]="username"
+        placeholder="Username"
+      />
+    </div>
+  </div>
+  <div>
+    <div id="fileInput">
+      <ul class="image-list">
+        <li *ngFor="let entry of profilePictures | keyvalue">
+          <img
+            #selectedImageElement
+            tabindex="0"
+            class="profile-picture"
+            src="{{ entry.value }}"
+            alt="{{ entry.key }}"
+            (click)="selectedImage = entry.value"
+            (keydown)="onKeyDown($event, selectedImageElement)"
+          />
+        </li>
+      </ul>
+    </div>
+    <div id="buttons">
+      <button
+        mat-raised-button
+        type="button"
+        [disabled]="isUnchanged()"
+        (click)="save()"
+      >
+        Apply changes
+      </button>
+      <button
+        mat-raised-button
+        type="button"
+        (click)="goBack()"
+        [routerLink]="['/profile/', user.username]"
+      >
+        Return to profile page
+      </button>
+      <h3 id="feedback">{{ feedback }}</h3>
+    </div>
+  </div>
+</div>

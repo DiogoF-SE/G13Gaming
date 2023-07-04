@@ -1,0 +1,71 @@
+<header>
+  <nav>
+    <div class="left-nav">
+      <div class="dropdown-content">
+        <a
+          routerLink="/dashboard"
+          mat-raised-button
+          color="accent"
+          id="dashboard-link"
+          ><b>G13 Gaming</b></a
+        >
+        <a routerLink="/browse" mat-raised-button id="browse-link"
+          ><mat-icon>store</mat-icon><span>Store</span></a
+        >
+        <a
+          [routerLink]="username ? '/profile/' + username : '/login'"
+          mat-raised-button
+        >
+          <mat-icon>person</mat-icon>
+          <span>Profile</span>
+        </a>
+        <a
+          [routerLink]="username ? '/profilesearch' : '/login'"
+          mat-raised-button
+        >
+          <mat-icon>person_search</mat-icon>
+          <span>Search</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <nav>
+    <div class="right-nav">
+      <a routerLink="/cart" id="cart-link">
+        <mat-icon
+          [matBadge]="itemsInCart"
+          matBadgeColor="primary"
+          matBadgeSize="small"
+          matBadgePosition="before"
+          >shopping_cart</mat-icon
+        >
+        <span class="cdk-visually-hidden"
+          >Your cart has {{ itemsInCart }} items.</span
+        >
+      </a>
+      <ng-container *ngIf="username">
+        <button
+          mat-raised-button
+          class="logout"
+          (click)="logout()"
+          routerLink="/dashboard"
+        >
+          Logout
+        </button>
+      </ng-container>
+      <ng-container *ngIf="!username">
+        <a routerLink="/login" mat-raised-button>Login/Sign Up</a>
+      </ng-container>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <h2>Welcome {{ username ? username : "to G13 Gaming" }}</h2>
+  <p>
+    Discover the latest and greatest games, connect with other gamers, and share
+    your experiences!
+  </p>
+  <router-outlet></router-outlet>
+</main>
