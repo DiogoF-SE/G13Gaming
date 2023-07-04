@@ -1,3 +1,9 @@
+G13 Gaming Store, is a Mock Gaming Store web application developed for the Software Engineering curricural unit using the MEAN Stack, MongoDB, Express, Angular and NodeJS
+
+Video demo available here:
+https://youtu.be/k6ELnfvBk_M
+
+
 **RUN**
 
 1. abrir pasta "frontend" e correr `npm install` no cmd.
